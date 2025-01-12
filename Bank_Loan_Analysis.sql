@@ -21,8 +21,8 @@ UPDATE bank_loan
 SET con_issue_date = 
 	CASE 
 		WHEN issue_date LIKE '__/__/____' THEN STR_TO_DATE(issue_date, '%d/%m/%Y') -- DD/MM/YYYY
-        WHEN issue_date LIKE '__-__-____' THEN STR_TO_DATE(issue_date, '%d-%m-%Y') -- DD-MM-YYYY
-        WHEN issue_date LIKE '____-__-__' THEN STR_TO_DATE(issue_date, '%Y-%m-%d') -- YYYY-MM-DD
+        	WHEN issue_date LIKE '__-__-____' THEN STR_TO_DATE(issue_date, '%d-%m-%Y') -- DD-MM-YYYY
+        	WHEN issue_date LIKE '____-__-__' THEN STR_TO_DATE(issue_date, '%Y-%m-%d') -- YYYY-MM-DD
 	ELSE NULL 
 END;
     
@@ -49,7 +49,7 @@ FROM
 	bank_loan
 WHERE 
 	Month(issue_date) = 12
-    AND YEAR(issue_date) = 2021;
+    	AND YEAR(issue_date) = 2021;
 
 -- Look at the total number of Loan Applications in the previous month (November)
 SELECT
@@ -58,7 +58,7 @@ FROM
 	bank_loan
 WHERE 
 	Month(issue_date) = 11
-    AND YEAR(issue_date) = 2021;
+    	AND YEAR(issue_date) = 2021;
 
 -- Look at the Total Funded Amount
 SELECT
@@ -82,7 +82,7 @@ FROM
 	bank_loan 
 WHERE
 	MONTH(issue_date) = 11
-    AND YEAR(issue_date) = 2021;
+    	AND YEAR(issue_date) = 2021;
     
 -- Look at the Total Amount Received from Borrowers
 SELECT
@@ -97,7 +97,7 @@ FROM
 	bank_loan
 WHERE 
 	MONTH(issue_date) = 12
-    AND YEAR(issue_date) = 2021; 
+    	AND YEAR(issue_date) = 2021; 
     
 -- Look at the Total Amount Received from Borrowers in the previous month (November)
 SELECT
@@ -106,7 +106,7 @@ FROM
 	bank_loan
 WHERE 
 	MONTH(issue_date) = 11
-    AND YEAR(issue_date) = 2021;
+    	AND YEAR(issue_date) = 2021;
     
 -- Look at the average Interest Rate in all loans
 SELECT 
@@ -145,7 +145,7 @@ FROM
 	bank_loan
 WHERE 
 	MONTH(issue_date) = 12
-    AND YEAR(issue_date) = 2021;
+    	AND YEAR(issue_date) = 2021;
     
 -- Look at the Average Debt-to-Income Ratio (DTI) for our Borrowers in the previous month (November)
 SELECT
@@ -154,14 +154,14 @@ FROM
 	bank_loan
 WHERE 
 	MONTH(issue_date) = 11
-    AND YEAR(issue_date) = 2021;
+    	AND YEAR(issue_date) = 2021;
     
 -- 2.2 Comparing Good Loan <> Bad Loan KPIs
 
 -- Look at the percentage of Good Loans ('Fully Paid' or 'Current')
 SELECT
 	(COUNT(
-    CASE
+    	CASE
 		WHEN loan_status = 'Fully Paid' OR loan_status = 'Current' THEN id END) * 100) /
 		COUNT(loan_status) AS Good_Loan_Percentage
 FROM
@@ -174,7 +174,7 @@ FROM
 	bank_loan
 WHERE 
 	loan_status = 'Fully Paid'
-    OR loan_status = 'Current';
+    	OR loan_status = 'Current';
     
 -- Look at the Total Funded Amount for Good Loans
 SELECT 
@@ -183,7 +183,7 @@ FROM
 	bank_loan
 WHERE 
 	loan_status = 'Fully Paid'
-    OR loan_status = 'Current';
+    	OR loan_status = 'Current';
     
 -- Look at the Total Amount Received for Good Loans
 SELECT 
@@ -192,14 +192,14 @@ FROM
 	bank_loan
 WHERE 
 	loan_status = 'Fully Paid'
-    OR loan_status = 'Current';
+    	OR loan_status = 'Current';
     
 -- Look at the percentage of Bad Loans ('Charged Off')
 SELECT
 	(COUNT(
-    CASE
+    	CASE
 		WHEN loan_status = 'Charged Off' THEN id END) * 100) /
-	COUNT(loan_status) AS Bad_Loan_Percentage
+		COUNT(loan_status) AS Bad_Loan_Percentage
 FROM
 	bank_loan;
     
@@ -253,10 +253,12 @@ WHERE
 	MONTH(issue_date) = 12 
 GROUP BY 
 	loan_status;
-    
--- 2.4 Detailed Overview of Lending Operations
 
--- Look at the Monthly Trends by Issue Date
+-- ===============================================
+-- Part 3: Detailed Overview of Lending Operations
+-- ===============================================
+
+-- 3. 1 Look at the Monthly Trends by Issue Date
 SELECT 
     MONTH(issue_date) AS Month_Number, 
     MONTHNAME(issue_date) AS Month_Name, 
@@ -271,7 +273,7 @@ GROUP BY
 ORDER BY 
 	MONTH(issue_date);
     
--- Look at the Regional Analysis by State
+-- 3.2 Look at the Regional Analysis by State
 SELECT 
     address_state AS State, 
     COUNT(id) AS Total_Loan_Applications,
@@ -284,7 +286,7 @@ GROUP BY
 ORDER BY 
 	COUNT(id) DESC;
     
--- Look at the Loan Term Analysis
+-- 3.3 Look at the Loan Term Analysis
 SELECT 
     term,
     COUNT(id) AS Total_Loan_Applications,
@@ -297,7 +299,7 @@ GROUP BY
 ORDER BY 
 	term;
     
--- Look at the Employee Length Analysis
+-- 3.4 Look at the Employee Length Analysis
 SELECT 
     emp_length, 
     COUNT(id) AS Total_Loan_Applications,
@@ -310,7 +312,7 @@ GROUP BY
 ORDER BY 
 	COUNT(id) DESC;
     
--- Look at the Loan Purpose Breakdown
+-- 3.5 Look at the Loan Purpose Breakdown
 SELECT 
     purpose, 
     COUNT(id) AS Total_Loan_Applications,
@@ -323,7 +325,7 @@ GROUP BY
 ORDER BY 
 	COUNT(id) DESC;
     
--- Look at the Home Ownership Analysis
+-- 3.6 Look at the Home Ownership Analysis
 SELECT 
     home_ownership,
     COUNT(id) AS Total_Loan_Applications,
