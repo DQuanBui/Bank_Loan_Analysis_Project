@@ -4,7 +4,7 @@
 USE bank_loan_db;
 
 -- =====================================
--- Part 1: Updating the Database Overall
+-- PART 1: Updating the Database Overall
 -- =====================================
 
 -- Look at the database to understand key metrics
@@ -255,7 +255,7 @@ GROUP BY
 	loan_status;
 
 -- ===============================================
--- Part 3: Detailed Overview of Lending Operations
+-- PART 3: Detailed Overview of Lending Operations
 -- ===============================================
 
 -- 3. 1 Look at the Monthly Trends by Issue Date
