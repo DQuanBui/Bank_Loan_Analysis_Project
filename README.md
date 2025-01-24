@@ -6,8 +6,8 @@
 The Bank Loan Analysis project aims to provide actionable insights into key lending metrics through SQL scripts and interactive Tableau dashboards. It analyzes loan applications, funded amounts, repayments, and debt-to-income ratios to evaluate portfolio health and lending performance. The dashboards visualize trends, regional variations, and customer segments, enabling data-driven decision-making and risk management. This project supports transparency, operational efficiency, and strategic growth in the banking sector.
 
 - **Dataset Link:** [Bank_Loan_Dataset](https://github.com/DQuanBui/Bank_Loan_Analysis_Project/blob/main/bank_loan_data.csv)
-- **SQL Scripts** [Bank_Loan_SQL_Scripts](https://github.com/DQuanBui/Bank_Loan_Analysis_Project/blob/main/Bank_Loan_Analysis.sql)
-- **Tableau Dashboards** [Tableau_Dashboards](https://public.tableau.com/app/profile/dang.quan.bui6438/viz/BankLoanAnalysis_17376109182850/SUMMARY)
+- **SQL Scripts:** [Bank_Loan_SQL_Scripts](https://github.com/DQuanBui/Bank_Loan_Analysis_Project/blob/main/Bank_Loan_Analysis.sql)
+- **Tableau Dashboards:** [Tableau_Dashboards](https://public.tableau.com/app/profile/dang.quan.bui6438/viz/BankLoanAnalysis_17376109182850/SUMMARY)
 
 ## Tools 
 - Language: SQL
